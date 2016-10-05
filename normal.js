@@ -6,15 +6,12 @@ var sumInputs = function () {
   return sum;
 };
 
-var getAnswer = function () { };
-
-
-console.log("The code loaded");
-
-var addClickEvent = function () {
-  var button = document.getElementById("calculate-button");
-  // button.addEventListener("click", getAnswer);
-  button.addEventListener("click", function () {
-    console.log("button got clicked");
-  });
+var getAnswer = function (event) {
+  event.preventDefault();
+  var answer = sumInputs();
+  var answerBox = document.getElementById("answer");
+  answerBox.textContent = answer;
 };
+
+var button = document.getElementById("calculate-button");
+button.addEventListener("click", getAnswer);
