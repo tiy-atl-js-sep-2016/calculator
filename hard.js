@@ -37,6 +37,24 @@ var processNumber = function (element) {
   }
 };
 
+var processEqual = function (element) {
+  var operation = calcState.operator;
+  var left = Number(calcState.left);
+  var right = Number(calcState.right);
+
+  if (operation === "+") {
+    var result = left + right;
+  } else if (operation === "-") {
+    var result = left - right;
+  } else if (operation === "*") {
+    var result = left * right;
+  } else if (operation === "/") {
+    var result = left / right;
+  }
+
+  calcState = { left: result, operator: "", right: "" };
+};
+
 var controls = document.getElementById("controls");
 controls.addEventListener("click", processButton);
 
