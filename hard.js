@@ -12,6 +12,8 @@ var processButton = function (event) {
   if (buttonType === "number")   { processNumber(target); }
   if (buttonType === "clear")    { processClear(target); }
   if (buttonType === "equal")    { processEqual(target); }
+
+  updateDisplay();
 };
 
 var updateDisplay = function () {
@@ -20,13 +22,11 @@ var updateDisplay = function () {
 };
 
 var processClear = function () {
-  calcState = {left: "", right: "", operator: ""};
-  updateDisplay();
+  calcState = { left: "", right: "", operator: "" };
 };
 
 var processOperator = function (element) {
   calcState.operator = element.textContent;
-  updateDisplay();
 };
 
 var processNumber = function (element) {
@@ -35,7 +35,6 @@ var processNumber = function (element) {
   } else {
     calcState.right += element.textContent;
   }
-  updateDisplay();
 };
 
 var controls = document.getElementById("controls");
