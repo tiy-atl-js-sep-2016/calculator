@@ -21,6 +21,10 @@ var updateDisplay = function () {
   display.textContent = calcState.left + " " + calcState.operator + " " + calcState.right;
 };
 
+var updateCalc = function (newLeft) {
+  calcState = { left: newLeft, right: "", operator: "" };
+};
+
 var processClear = function () {
   calcState = { left: "", right: "", operator: "" };
 };
@@ -42,17 +46,10 @@ var processEqual = function (element) {
   var left = Number(calcState.left);
   var right = Number(calcState.right);
 
-  if (operation === "+") {
-    var result = left + right;
-  } else if (operation === "-") {
-    var result = left - right;
-  } else if (operation === "*") {
-    var result = left * right;
-  } else if (operation === "/") {
-    var result = left / right;
-  }
-
-  calcState = { left: result, operator: "", right: "" };
+  if (operation === "+") { updateCalc(left + right); }
+  if (operation === "-") { updateCalc(left - right); }
+  if (operation === "*") { updateCalc(left * right); }
+  if (operation === "/") { updateCalc(left / right); }
 };
 
 var controls = document.getElementById("controls");
